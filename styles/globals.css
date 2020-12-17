@@ -1,9 +1,10 @@
 html,
 body {
-  padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: linear-gradient(to right, #ff5f6d 30%, #ffc371 90%);
+  margin-top: 2rem;
 }
 
 a {
