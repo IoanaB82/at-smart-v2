@@ -16,17 +16,11 @@ export interface IContextProps {
   dispatch: Dispatch<IAction>;
 }
 
-// export const AppContext = createContext<IContextProps>({
-//   dispatch: () => {},
-//   state: initialState,
-// });
 
-export const AppContext = createContext<IContextProps>();
+export const AppContext = createContext({} as IContextProps);
 
 export function AppProvider(props: any) {
-  // if (props.value) {
-  //   initialState = [...initialState, ...props.value];
-  // }
+ 
 
   const asyncLocalStorage = {
     setItem: async function (key, value) {
