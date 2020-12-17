@@ -16,7 +16,7 @@ const Favorites = (props: any) => {
       >
         <h2>Your favorite recipes</h2>
 
-        {state.favoriteRecipes?.length ? (
+        {state?.favoriteRecipes?.length ? (
           state.favoriteRecipes.map((el) => (
             <div
               key={el.recipe.id}
