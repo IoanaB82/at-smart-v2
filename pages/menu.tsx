@@ -136,7 +136,10 @@ const Menu = (props: any) => {
                                     <span style={{ marginRight: ".3rem" }}>
                                       {ingredient.unit}
                                     </span>
-                                    {ingredient.description}
+                                    {ingredient.description.replace(
+                                      "&nbsp;",
+                                      " "
+                                    )}
                                   </div>
                                 </div>
                               );
