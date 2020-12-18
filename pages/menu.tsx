@@ -6,7 +6,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DoneIcon from "@material-ui/icons/Done";
 import Button from "@material-ui/core/Button";
 import chain from "lodash";
-import sortBy from "lodash";
+
 import _ from "lodash";
 
 const Menu = (props: any) => {
@@ -15,67 +15,6 @@ const Menu = (props: any) => {
   function mergeNames(arr) {
     return chain(arr).groupBy("dayOrder").value();
   }
-
-  // let newMenu = Object.entries(mergeNames(state.menu));
-  // let otherMenu = mergeNames(state.menu);
-  // let sortingArr = [
-  //   { day: "Monday" },
-  //   { day: "Tuesday" },
-  //   { day: "Wednesday" },
-  //   { day: "Thursday" },
-  //   { day: "Friday" },
-  //   { day: "Saturday" },
-  //   { day: "Sunday" },
-  // ];
-
-  // let sorter = {
-  //   Monday: 1,
-  //   Tuesday: 2,
-  //   Wednesday: 3,
-  //   Thursday: 4,
-  //   Friday: 5,
-  //   Saturday: 6,
-  //   Sunday: 7,
-  // };
-
-  // // let result = newMenu.sort(function sortByDay(a, b) {
-  // //   let day1 = a.day;
-  // //   let day2 = b.day;
-  // //   return sorter[day1] - sorter[day2];
-  // // });
-
-  // function mapOrder(array, order, key) {
-  //   array.sort(function (a, b) {
-  //     let A = a[key];
-  //     let B = b[key];
-
-  //     if (order.indexOf(A) > order.indexOf(B)) {
-  //       return 1;
-  //     } else {
-  //       return -1;
-  //     }
-  //   });
-
-  //   return array;
-  // }
-
-  // function mycomparator(a, b) {
-  //   return a.dayOrder - b.dayOrder;
-  // }
-
-  // // let result = newMenu.sort((a, b) =>
-  // //   a[1].dayOrder.localeCompare(b[1].dayOrder)
-  // // );
-
-  // // let result = _.sortBy(newMenu, [
-  // //   ["", [{"dayOrder"}]]
-  // // ]);
-
-  // //let result = [...new Set(state.menu.map((item) => item.day  item.recipe})];
-  // //console.log(result);
-
-  // console.log(newMenu);
-  // //console.log(result2);
 
   return (
     <>
@@ -253,6 +192,12 @@ const Menu = (props: any) => {
 
           #ingredient-quantity {
             margin-right: 4px;
+          }
+
+          @media screen and (max-width: 800px) {
+            div#ingredients-list {
+              grid-template-columns: 1fr;
+            }
           }
         `}
       </style>

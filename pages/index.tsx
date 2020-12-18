@@ -10,7 +10,12 @@ export default function Home() {
       <p>
         Plan ahead what to buy by adding the missing ingredients on the list.
       </p>
-      
+      Delete all your saved data? Click here
+      <DeleteIcon
+        style={{ cursor: "pointer" }}
+        color="primary"
+        onClick={() => window.localStorage.removeItem("state")}
+      />
     </div>
   );
 }

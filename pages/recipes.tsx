@@ -29,7 +29,7 @@ const Recipes = ({ recipesInit }: PageProps) => {
   const [error, setError] = useState(null);
 
   //pagination
-  const resultsPerPage = 10;
+  const resultsPerPage = 9;
   const [page, setPage] = useState(1);
   const start = (page - 1) * resultsPerPage;
   const end = page * resultsPerPage;
@@ -65,11 +65,6 @@ const Recipes = ({ recipesInit }: PageProps) => {
     }
   };
 
-  // const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   fetchSearchResults();
-  //   e.preventDefault();
-  // };
-
   //click on a recipe in the list to preview
   const handleRecipeClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -100,40 +95,40 @@ const Recipes = ({ recipesInit }: PageProps) => {
           }}
         />
       </div>
-      <div>
+      <div id="search-results">
         {isLoading && <Spinner />}
         {error && <p>some error</p>}
         {!isLoading && !error && recipes.length === 0 && (
           <p>search an ingredient</p>
         )}
         {recipes.length > 0 && (
-          <SearchResults
-            recipes={recipes}
-            end={end}
-            start={start}
-            onChange={(recipes: IRecipes) => recipes}
-            onClick={(e: React.ChangeEvent<HTMLFormElement>) =>
-              setClickedRecipe(e.currentTarget.value)
-            }
-          />
+          <div id="search-results-recipes">
+            <SearchResults
+              recipes={recipes}
+              end={end}
+              start={start}
+              onChange={(recipes: IRecipes) => recipes}
+              onClick={(e: React.ChangeEvent<HTMLFormElement>) =>
+                setClickedRecipe(e.currentTarget.value)
+              }
+            />
+          </div>
         )}
 
-        <Pagination
-          count={pages}
-          onChange={handlePageChange}
-          page={page}
-          value={page}
-        />
+        <div id="search-results-pagination">
+          <Pagination
+            count={pages}
+            onChange={handlePageChange}
+            page={page}
+            value={page}
+          />
+        </div>
       </div>
       <div id="recipe-display">
         <RecipeToDisplay clickedRecipe={clickedRecipe} key={clickedRecipe} />
       </div>
       <style jsx>
         {`
-          div {
-            display: flex;
-            flex-direction: column;
-          }
           div#search-bar {
             grid-row: 1 /2;
             grid-column: 1/3;
@@ -144,9 +139,44 @@ const Recipes = ({ recipesInit }: PageProps) => {
 
             row-gap: 1rem;
           }
+
+          @media screen and (max-width: 800px) {
+            div#container {
+              grid-template-columns: 1fr;
+              grid-template-rows: min min 1fr;
+              row-gap: 1rem;
+            }
+
+            div#search-results {
+              grid-row: 2/3;
+              display: grid;
+              grid-template-rows: min min;
+            }
+            div#search-results-recipes {
+              grid-row: 2/3;
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              grid-gap: 0.5rem;
+              margin: 0 auto;
+            }
+
+            div#search-results-pagination {
+              grid-row: 1/2;
+            }
+
+            div#recipe-display {
+              grid-row: 3/4;
+            }
+          }
+
           div#recipe-display {
             background-color: #f9f5f3;
           }
+
+          @media screen and (max-width: 600px) {
+            div#search-results-recipes {
+              grid-template-columns: 1fr 1fr;
+            }
         `}
       </style>
     </div>

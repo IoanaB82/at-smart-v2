@@ -31,7 +31,7 @@ const Favorites = (props: any) => {
                   width: "10rem",
                   height: "10rem",
                   objectFit: "cover",
-                  marginRight: "1rem",
+                  margin: "1rem",
                 }}
                 src={el.recipe.image_url}
                 alt={el.recipe.title}
