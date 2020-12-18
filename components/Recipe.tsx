@@ -6,8 +6,6 @@ import RestaurantIcon from "@material-ui/icons/Restaurant";
 
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-import { IRecipe } from "../utils/appReducer";
-
 import AddToMenu from "./AddToMenu";
 
 const Recipe = ({ recipe }) => {
@@ -15,8 +13,16 @@ const Recipe = ({ recipe }) => {
     <>
       <div>
         <figure>
-          <img id="recipe-image" src={recipe.image_url}></img>
-          <h2 id="recipe-title">{recipe.title}</h2>
+          <img
+            id="recipe-image"
+            src={recipe.image_url}
+            alt={recipe.title.replace("amp;", "")}
+            onError={(e) => {
+              onerror = null;
+              (e.target as HTMLImageElement).src = "/noimg.png";
+            }}
+          ></img>
+          <h2 id="recipe-title">{recipe.title.replace("amp;", "")}</h2>
         </figure>
 
         <div id="recipe-details">
@@ -84,6 +90,7 @@ const Recipe = ({ recipe }) => {
           margin-block-start: 0;
           margin-block-end: 0;
         }
+
         figure:before {
           display: block;
           height: 100%;
@@ -163,6 +170,22 @@ const Recipe = ({ recipe }) => {
           left: 50%;
           margin-top: 2rem;
           transform: translateX(-50%);
+        }
+        @media screen and (max-width: 800px) {
+          div#recipe-ingredients {
+            padding: 0.7rem;
+          }
+
+          div#ingredients-list {
+            grid-template-columns: 1fr;
+          }
+
+          div#recipe-details {
+            display: flex;
+            justify-content: center
+            justify-items: space-between;
+            padding: 5rem 0.5rem 2rem 0.5rem;
+          }
         }
       `}</style>
     </>

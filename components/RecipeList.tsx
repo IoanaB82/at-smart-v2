@@ -3,9 +3,16 @@ const RecipeList = (props) => {
     <>
       <button onClick={props.onClick} value={props.value}>
         <figure>
-          <img src={props.src} />
+          <img
+            src={props.src}
+            alt={props.title.replace("amp;", "")}
+            onError={(e) => {
+              onerror = null;
+              (e.target as HTMLImageElement).src = "/noimg.png";
+            }}
+          />
         </figure>
-        <h4>{props.title}</h4>
+        <h4>{props.title.replace("amp;", "")}</h4>
       </button>
 
       <style jsx>
@@ -19,6 +26,16 @@ const RecipeList = (props) => {
             text-align: left;
             background-color: #fff;
             border: none;
+          }
+
+          @media screen and (max-width: 800px) {
+            button {
+              width: 10rem;
+              align-content: center;
+              flex-direction: column;
+
+              border: 1px solid #f2f2f2;
+            }
           }
 
           button:hover {
@@ -41,9 +58,33 @@ const RecipeList = (props) => {
           }
 
           figure {
-            margin-inline-start: 0;
-            margin-inline-end: 1rem;
+            width: 4rem;
+            height: 4rem;
+            position: relative;
+            top: 0;
+            display: block;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+
+            border-radius: 50%;
           }
+
+          figure:before {
+            display: block;
+            height: 100%;
+            width: 100%;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(
+              to right bottom,
+              #fbdb89,
+              #f48982
+            );
+            opacity: 0.2;
+            border-radius: 50%;
+          }
+
           figure img {
             width: 4rem;
             height: 4rem;

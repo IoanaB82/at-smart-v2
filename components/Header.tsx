@@ -1,5 +1,3 @@
-import { styled } from "@material-ui/core";
-import SearchBar from "./Searchbar";
 import Navbar from "./Navbar";
 import Link from "next/link";
 
@@ -30,6 +28,12 @@ const Header = (props) => (
       }
       div {
         background: #f2f2f2;
+      }
+
+      @media screen and (max-width: 600px) {
+        h1 {
+          font-size: 1.6rem;
+        }
       }
     `}</style>
   </>

@@ -12,13 +12,15 @@ const Searchbar = (props) => {
           value={props.value}
           onChange={props.onChange}
         />
-        <IconButton type="submit" color="primary" size="small">
-          <SearchIcon />
+        <IconButton type="submit" color="primary" size="medium">
+          <SearchIcon fontSize="large" />
         </IconButton>
       </form>
       <style jsx>{`
         input {
           border-radius: "15px";
+          height: 3rem;
+          margin-left: 0.5rem;
         }
       `}</style>
     </>
