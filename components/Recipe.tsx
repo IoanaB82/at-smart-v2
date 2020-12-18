@@ -49,7 +49,10 @@ const Recipe = ({ recipe }) => {
 
                   <div id="ingredient-quantity">{ingredient.quantity}</div>
                   <div id="ingredient-desc">
-                    <span>{ingredient.unit}</span> {ingredient.description}
+                    <span style={{ marginRight: ".3rem" }}>
+                      {ingredient.unit}
+                    </span>
+                    {ingredient.description.replace("&nbsp;", " ")}
                   </div>
                 </div>
               );
