@@ -133,7 +133,7 @@ const Menu = (props: any) => {
                                     {ingredient.quantity}
                                   </div>
                                   <div id="ingredient-desc">
-                                    <span style={{ marginRight: ".9ch" }}>
+                                    <span style={{ marginRight: ".3rem" }}>
                                       {ingredient.unit}
                                     </span>
                                     {ingredient.description}
